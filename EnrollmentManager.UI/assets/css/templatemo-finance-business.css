@@ -183,7 +183,7 @@ a.border-button {
 .sub-header {
     background-color: #161D28;
     height: 46px;
-    line-height: 46px;
+    /*line-height: 46px;*/
 }
 
     .sub-header ul li {
@@ -251,11 +251,11 @@ header {
 }
 
     header .navbar {
-        padding: 20px 0px;
+        /*padding: 20px 0px;*/
     }
 
 .background-header .navbar {
-    padding: 10px 0px;
+    /*padding: 10px 0px;*/
 }
 
 .background-header {
@@ -283,7 +283,7 @@ header {
 
 .navbar .navbar-brand {
     float: left;
-    margin-top: 12px;
+    /*margin-top: 12px;*/
     outline: none;
 }
 
@@ -316,13 +316,13 @@ header {
 }
 
 .navbar .navbar-nav a.nav-link {
-    text-transform: capitalize;
+    /*text-transform: capitalize;*/
     font-size: 15px;
     font-weight: 300;
     letter-spacing: 0.5px;
     color: #fff;
     transition: all 0.5s;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
 }
 
 .navbar .navbar-nav .nav-link:hover,
@@ -1464,7 +1464,7 @@ footer {
         }
 
     .navbar .navbar-nav a.nav-link {
-        padding: 15px 0px;
+        /*padding: 15px 0px;*/
         color: #1e1e1e !important;
     }
 

@@ -8,8 +8,12 @@
     <meta name="description" content="">
     <meta name="author" content="TemplateMo">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
 
-    <title>Finance Business HTML5 Template</title>
+    <title>The Tower</title>
 
     <!-- Bootstrap core CSS -->
     <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -44,39 +48,57 @@
             <div class="row">
                 <div class="col-md-4 col-xs-12">
                     <div class="left-info">
-                        <a class="navbar-brand" href="index.html"><h2>Finance Business</h2></a>
+                        <a class="navbar-brand" href="@Url.Action("Index","Home")"><h2>Tower University</h2></a>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <nav class="navbar navbar-expand-lg">
-                        
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarResponsive">
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href="#top">
-                                            Home
-                                            <span class="sr-only">(current)</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="contact.html">Contact Us</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        
-                    </nav>
+                    
                 </div>
                 <div class="col-md-4">
-                    <ul class="right-icons">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                    </ul>
+                    @Html.Partial("_LoginPartial")
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="sub-header">
+        <div class="container">
+            <div class="row">
+                
+                <div >
+                    <nav class="navbar navbar-expand-lg">
+
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarResponsive">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("Index","Home")">
+                                        Home
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("Contact","Home")">Contact Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("Contact","Home")">You</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("Contact","Home")">Shouldn't</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("Contact","Home")">See</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("Contact","Home")">This</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </nav>
+                </div>
+                
             </div>
         </div>
     </div>
