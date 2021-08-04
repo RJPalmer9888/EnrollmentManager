@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d6f7a186d4474fa7876e42a43bc80f7a" Name="Diagram1" ZoomLevel="114">
+        <EntityTypeShape EntityType="db_a745f4_enrollmentmanagerModel.Cours" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a745f4_enrollmentmanagerModel.Enrollment" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a745f4_enrollmentmanagerModel.ScheduledClass" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a745f4_enrollmentmanagerModel.ScheduledClassStatus" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a745f4_enrollmentmanagerModel.Student" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a745f4_enrollmentmanagerModel.StudentStatus" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="db_a745f4_enrollmentmanagerModel.FK_ScheduledClasses_Courses" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a745f4_enrollmentmanagerModel.FK_Enrollments_ScheduledClasses" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a745f4_enrollmentmanagerModel.FK_Enrollments_Students" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a745f4_enrollmentmanagerModel.FK_ScheduledClasses_ScheduledClassStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a745f4_enrollmentmanagerModel.FK_Students_StudentStatuses" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
