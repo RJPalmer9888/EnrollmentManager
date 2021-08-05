@@ -40,8 +40,8 @@ namespace EnrollmentManager.UI.Controllers
         // GET: Enrollments/Create
         public ActionResult Create()
         {
-            ViewBag.ScheduledClassID = new SelectList(db.ScheduledClasses, "ScheduledClassID", "ScheduledClassID");
-            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentID");
+            ViewBag.ScheduledClassID = new SelectList(db.ScheduledClasses, "ScheduledClassID", "ClassInfo");
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "FullName");
             return View();
         }
 
@@ -59,8 +59,8 @@ namespace EnrollmentManager.UI.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ScheduledClassID = new SelectList(db.ScheduledClasses, "ScheduledClassID", "ScheduledClassID", enrollment.ScheduledClassID);
-            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentID", enrollment.StudentID);
+            ViewBag.ScheduledClassID = new SelectList(db.ScheduledClasses, "ScheduledClassID", "ClassInfo", enrollment.ScheduledClassID);
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "FullName", enrollment.StudentID);
             return View(enrollment);
         }
 
@@ -76,8 +76,8 @@ namespace EnrollmentManager.UI.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ScheduledClassID = new SelectList(db.ScheduledClasses, "ScheduledClassID", "ScheduledClassID", enrollment.ScheduledClassID);
-            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentID", enrollment.StudentID);
+            ViewBag.ScheduledClassID = new SelectList(db.ScheduledClasses, "ScheduledClassID", "ClassInfo", enrollment.ScheduledClassID);
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "FullName", enrollment.StudentID);
             return View(enrollment);
         }
 
@@ -94,8 +94,8 @@ namespace EnrollmentManager.UI.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ScheduledClassID = new SelectList(db.ScheduledClasses, "ScheduledClassID", "ScheduledClassID", enrollment.ScheduledClassID);
-            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "StudentID", enrollment.StudentID);
+            ViewBag.ScheduledClassID = new SelectList(db.ScheduledClasses, "ScheduledClassID", "ClassInfo", enrollment.ScheduledClassID);
+            ViewBag.StudentID = new SelectList(db.Students, "StudentID", "FullName", enrollment.StudentID);
             return View(enrollment);
         }
 

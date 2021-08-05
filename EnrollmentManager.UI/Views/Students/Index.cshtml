@@ -36,7 +36,7 @@
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PhotoUrl)
+            Photo
         </th>
         <th>
             @Html.DisplayNameFor(model => model.StudentStatus.SSName)
@@ -71,7 +71,7 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PhotoUrl)
+            <img src="~/imgstore/students/@item.PhotoUrl" alt="@item.FullName" title="@item.FullName" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.StudentStatus.SSName)

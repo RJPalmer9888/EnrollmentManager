@@ -159,7 +159,12 @@ namespace EnrollmentManager.DATA
     }
 
     [MetadataType(typeof(ScheduledClassMetadata))]
-    public partial class ScheduledClass { }
+    public partial class ScheduledClass {
+        public string ClassInfo
+        {
+            get { return Cours.CourseName + " - Begins " + StartDate + " at " + Location;}
+        }
+    }
 
     public class ScheduledClassStatusMetadata
     {
@@ -171,7 +176,7 @@ namespace EnrollmentManager.DATA
 
     [MetadataType(typeof(ScheduledClassStatusMetadata))]
     public partial class ScheduledClassStatus {
-
+        
     }
 
     public class StudentStatusMetadata

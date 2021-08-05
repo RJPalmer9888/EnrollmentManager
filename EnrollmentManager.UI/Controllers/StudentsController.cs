@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EnrollmentManager.DATA;
+using EnrollmentManager.UI.Utilities;
+using EnrollmentManager.UI.Models;
+using System.Drawing;
 
 namespace EnrollmentManager.UI.Controllers
 {
@@ -51,10 +54,42 @@ namespace EnrollmentManager.UI.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentID,FirstName,LastName,Major,Address,City,State,ZipCode,Phone,Email,PhotoUrl,SSID")] Student student)
+        public ActionResult Create([Bind(Include = "StudentID,FirstName,LastName,Major,Address,City,State,ZipCode,Phone,Email,PhotoUrl,SSID")] Student student, HttpPostedFileBase studentImage)
         {
             if (ModelState.IsValid)
             {
+                #region File Upload
+                string file = "NoImage.png";
+
+                if (studentImage != null)
+                {
+                    file = studentImage.FileName;
+                    string ext = file.Substring(file.LastIndexOf('.'));
+                    string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif" };
+
+                    //Check that the uploaded file is in our list of acceptable exts and file size <= 4mb max from ASP.NET
+                    if (goodExts.Contains(ext.ToLower()) && studentImage.ContentLength <= 4194303)
+                    {
+                        //Create a new file name (using a GUID)
+                        file = Guid.NewGuid() + ext;
+
+                        #region Resize Image
+                        string savePath = Server.MapPath("~/imgstore/students/");
+
+                        Image convertedImage = Image.FromStream(studentImage.InputStream);
+
+                        int maxImageSize = 500;
+
+                        int maxThumbSize = 100;
+
+                        ImageUtility.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize);
+                        #endregion
+                    }
+
+                    //no matter what, update the PhotoUrl witht he value of the file variable
+                    student.PhotoUrl = file;
+                }
+                #endregion
                 db.Students.Add(student);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -87,10 +122,42 @@ namespace EnrollmentManager.UI.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StudentID,FirstName,LastName,Major,Address,City,State,ZipCode,Phone,Email,PhotoUrl,SSID")] Student student)
+        public ActionResult Edit([Bind(Include = "StudentID,FirstName,LastName,Major,Address,City,State,ZipCode,Phone,Email,PhotoUrl,SSID")] Student student, HttpPostedFileBase studentImageEdit)
         {
             if (ModelState.IsValid)
             {
+                #region File Upload
+                string file = "NoImage.png";
+
+                if (studentImageEdit != null)
+                {
+                    file = studentImageEdit.FileName;
+                    string ext = file.Substring(file.LastIndexOf('.'));
+                    string[] goodExts = { ".jpeg", ".jpg", ".png", ".gif" };
+
+                    //Check that the uploaded file is in our list of acceptable exts and file size <= 4mb max from ASP.NET
+                    if (goodExts.Contains(ext.ToLower()) && studentImageEdit.ContentLength <= 4194303)
+                    {
+                        //Create a new file name (using a GUID)
+                        file = Guid.NewGuid() + ext;
+
+                        #region Resize Image
+                        string savePath = Server.MapPath("~/imgstore/students/");
+
+                        Image convertedImage = Image.FromStream(studentImageEdit.InputStream);
+
+                        int maxImageSize = 500;
+
+                        int maxThumbSize = 100;
+
+                        ImageUtility.ResizeImage(savePath, file, convertedImage, maxImageSize, maxThumbSize);
+                        #endregion
+                    }
+
+                    //no matter what, update the PhotoUrl witht he value of the file variable
+                    student.PhotoUrl = file;
+                }
+                #endregion
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
