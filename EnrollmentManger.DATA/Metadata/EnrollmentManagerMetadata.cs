@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EnrollmentManager.DATA
 {
-    public class EnrollmentMetaData
+    public class EnrollmentMetadata
     {
         //public int EnrollmentID { get; set; }
 
@@ -24,6 +24,8 @@ namespace EnrollmentManager.DATA
         [Required(ErrorMessage = "\"Enrollment Date\" is required")]
         public DateTime EnrollmentDate { get; set; }
     }
+    [MetadataType(typeof(EnrollmentMetadata))]
+    public partial class Enrollment { }
 
     public class StudentMetadata
     {
@@ -122,6 +124,9 @@ namespace EnrollmentManager.DATA
         public bool IsActive { get; set; }
     }
 
+    [MetadataType(typeof(CoursMetadata))]
+    public partial class Cours { }
+
     public class ScheduledClassMetadata
     {
         [Display(Name = "Course ID")]
@@ -153,12 +158,20 @@ namespace EnrollmentManager.DATA
         public int SCSID { get; set; }
     }
 
+    [MetadataType(typeof(ScheduledClassMetadata))]
+    public partial class ScheduledClass { }
+
     public class ScheduledClassStatusMetadata
     {
         [Display(Name = "Scheduled Class Status Name")]
         [Required(ErrorMessage = "\"Scheduled Class Status\" is required")]
         [StringLength(50, ErrorMessage = "*Scheduled Class Status Name must be 50 characters or less")]
         public string SCSName { get; set; }
+    }
+
+    [MetadataType(typeof(ScheduledClassStatusMetadata))]
+    public partial class ScheduledClassStatus {
+
     }
 
     public class StudentStatusMetadata
@@ -174,4 +187,7 @@ namespace EnrollmentManager.DATA
         [UIHint("MultilineText")]
         public string SSDescription { get; set; }
     }
+
+    [MetadataType(typeof(StudentStatusMetadata))]
+    public partial class StudentStatus { }
 }

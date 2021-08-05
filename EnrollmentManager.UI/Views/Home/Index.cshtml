@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="left-content">
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    @if (Request.IsAuthenticated)
                     {
                         <h1>Welcome, @User.Identity.GetUserName()!</h1>
                     }
