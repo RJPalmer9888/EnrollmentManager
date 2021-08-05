@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EnrollmentManger.DATA
+namespace EnrollmentManager.DATA
 {
     using System;
     using System.Data.Entity;

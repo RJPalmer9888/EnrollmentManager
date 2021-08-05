@@ -71,6 +71,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EnrollmentModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Metadata\EnrollmentManagerMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScheduledClass.cs">
       <DependentUpon>EnrollmentModel.tt</DependentUpon>

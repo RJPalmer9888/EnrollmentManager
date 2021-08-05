@@ -11,7 +11,7 @@
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    
+
 
     <title>The Tower</title>
 
@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    
+
                 </div>
                 <div class="col-md-4">
                     @Html.Partial("_LoginPartial")
@@ -63,8 +63,8 @@
     <div class="sub-header">
         <div class="container">
             <div class="row">
-                
-                <div >
+
+                <div>
                     <nav class="navbar navbar-expand-lg">
 
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,27 +78,36 @@
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("Index","Enrollments")">Enrollments</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("Index","Students")">Students</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("Index","ScheduledClasses")">Classes</a>
+                                    </li>
+                                }
+                                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("Index","Courses")">Courses</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("Index","StudentStatus")">Student Statuses</a>
+                                    </li>
+                                }
                                 <li class="nav-item">
                                     <a class="nav-link" href="@Url.Action("Contact","Home")">Contact Us</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="@Url.Action("Contact","Home")">You</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="@Url.Action("Contact","Home")">Shouldn't</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="@Url.Action("Contact","Home")">See</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="@Url.Action("Contact","Home")">This</a>
                                 </li>
                             </ul>
                         </div>
 
                     </nav>
                 </div>
-                
+
             </div>
         </div>
     </div>

@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.1433
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnrollmentManager.UI", "EnrollmentManager.UI\EnrollmentManager.UI.csproj", "{A965E6EE-9C9E-4C52-A2FF-020B1B4E0239}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnrollmentManger.DATA", "EnrollmentManger.DATA\EnrollmentManger.DATA.csproj", "{4324BF91-9942-4199-AFB1-0CCF6D93DDEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnrollmentManager.DATA", "EnrollmentManger.DATA\EnrollmentManager.DATA.csproj", "{4324BF91-9942-4199-AFB1-0CCF6D93DDEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

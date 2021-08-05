@@ -1,0 +1,34 @@
+﻿@model EnrollmentManager.DATA.StudentStatus
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StudentStatus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SSName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SSName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SSDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SSDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SSID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
