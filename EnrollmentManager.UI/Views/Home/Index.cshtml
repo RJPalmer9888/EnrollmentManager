@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="left-content" >
+                <div class="left-content">
                     @if (Request.IsAuthenticated)
                     {
                         <h1>Welcome, @User.Identity.GetUserName()!</h1>
@@ -13,6 +13,12 @@
                         if (User.IsInRole("Admin"))
                         {
                             <p class="roleInfo">Your Admin Status grants you access to all Site Tables. If you need assistance with a Table not found on this site, please reach out to the database manager.</p>
+                            <div class="roleInfo">
+                                <p>Below is the documentation of the Application:</p>
+                                @*<i class="fa-file-pdf-o"></i>*@
+                                <a href="~/Enrollment Manager App.pdf" download>Documentation PDF</a>
+                            </div>
+
                         }
                         else
                         {
