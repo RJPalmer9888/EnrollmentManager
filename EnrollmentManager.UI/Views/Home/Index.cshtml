@@ -12,11 +12,11 @@
                         <br />
                         if (User.IsInRole("Admin"))
                         {
-                            <p>Your Admin Status grants you access to all Site Tables. If you need assistance with a Table not found on this site, please reach out to the database manager.</p>
+                            <p class="roleInfo">Your Admin Status grants you access to all Site Tables. If you need assistance with a Table not found on this site, please reach out to the database manager.</p>
                         }
                         else
                         {
-                            <p>Your User Status grants you access to Enrollments, Classes, and Students. If you need assistance with another Table, please contact a site administrator.</p>
+                            <p class="roleInfo">Your User Status grants you access to Enrollments, Classes, and Students. If you need assistance with another Table, please contact a site administrator.</p>
                         }
 
                     }
@@ -57,10 +57,9 @@
                                     </div>
                                 </div>
                                 <p>
-                                    @Html.ActionLink("Register a new user?", "Register")
-                                </p>
-                                <p>
-                                    @Html.ActionLink("Forget your password?", "ForgotPassword")
+                                    @Html.ActionLink("Register a new user?", "Register", "Account")
+                                    <br />
+                                    @Html.ActionLink("Forget your password?", "ForgotPassword", "Account")
                                 </p>
                             }
                         </section>
