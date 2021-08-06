@@ -10,6 +10,7 @@ using EnrollmentManager.DATA;
 using EnrollmentManager.UI.Utilities;
 using EnrollmentManager.UI.Models;
 using System.Drawing;
+using PagedList;
 
 namespace EnrollmentManager.UI.Controllers
 {
@@ -19,15 +20,57 @@ namespace EnrollmentManager.UI.Controllers
         private db_a745f4_enrollmentmanagerEntities db = new db_a745f4_enrollmentmanagerEntities();
 
         // GET: Students
-        public ActionResult Index()
+        public ActionResult Index(string searchString, int? page = 1)
         {
-            var students = db.Students.Include(s => s.StudentStatus);
-            return View(students.ToList());
+            @Session["grid"] = false;
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+            ViewBag.pageSize = pageSize;
+            var students = db.Students.Include(s => s.StudentStatus).OrderBy(s => s.LastName).ToList();
+
+            #region Search functionality
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                return View((from t in students
+                             where t.FullName.ToLower().Contains(searchString.ToLower())
+                             select t).ToPagedList(pageNumber, pageSize));
+            }
+
+            return View((from t in students
+                         select t).ToPagedList(pageNumber, pageSize));
+
+
+            #endregion
+        }
+
+        [HttpGet]
+        public ActionResult IndexGrid(string searchString, int? page = 1)
+        {
+            Session["grid"] = true;
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            ViewBag.pageSize = pageSize;
+            var students = db.Students.Include(s => s.StudentStatus).OrderBy(s => s.LastName).ToList();
+
+            #region Search functionality
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                return View((from t in students
+                             where t.FullName.ToLower().Contains(searchString.ToLower())
+                             select t).ToPagedList(pageNumber, pageSize));
+            }
+
+            return View((from t in students
+                         select t).ToPagedList(pageNumber, pageSize));
+
+
+            #endregion
         }
 
         // GET: Students/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.Grid = Session["grid"];
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -87,8 +130,9 @@ namespace EnrollmentManager.UI.Controllers
                     }
 
                     //no matter what, update the PhotoUrl witht he value of the file variable
-                    student.PhotoUrl = file;
+                    
                 }
+                student.PhotoUrl = file;
                 #endregion
                 db.Students.Add(student);
                 db.SaveChanges();
@@ -128,6 +172,11 @@ namespace EnrollmentManager.UI.Controllers
             {
                 #region File Upload
                 string file = "NoImage.png";
+                if (student.PhotoUrl != "NoImage.png" && student.PhotoUrl != null)
+                {
+                    file = student.PhotoUrl;
+                }
+                
 
                 if (studentImageEdit != null)
                 {
@@ -155,8 +204,9 @@ namespace EnrollmentManager.UI.Controllers
                     }
 
                     //no matter what, update the PhotoUrl witht he value of the file variable
-                    student.PhotoUrl = file;
+                    
                 }
+                student.PhotoUrl = file;
                 #endregion
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();

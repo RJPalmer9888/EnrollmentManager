@@ -1,0 +1,55 @@
+﻿@model PagedList.IPagedList<EnrollmentManager.DATA.Student>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+        </div>
+
+        <div class="col-md-6">
+            <div class="filters">
+                @using (Html.BeginForm("IndexGrid", "Students", FormMethod.Get))
+                {
+                    <p>
+                        Find by Name: @Html.TextBox("SearchString", ViewBag.SearchString as string)
+                        <input type="submit" class="btn btn-primary" value="Search" />
+                    </p>
+                }
+            </div>
+        </div>
+        <div class="col-md-3">
+            @Html.PagedListPager(Model, page => Url.Action("IndexGrid", new { page, searchString = ViewBag.SearchString }))
+            <a href="@Url.Action("Index","Students")"><p>List View</p></a>
+        </div>
+    </div>
+
+    <section id="weaponGrid">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-4 student">
+                    <div class="product-item">
+                        <a href="@Url.Action("Details", "Students", new {id = item.StudentID })" class="course-img">
+                            <div class="buffer"><img src="~/imgstore/students/@item.PhotoUrl" alt="@item.FullName" /></div>
+                        </a>
+                        <div class="down-content">
+                            <a href="@Url.Action("Details", "Students", new {id = item.StudentID })"><h4>@item.FullName</h4></a>
+                            <h6><br />@item.Major</h6>
+                            <p>@item.Email</p>
+                            <span>@item.StudentStatus.SSName</span>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </section>
+</div>

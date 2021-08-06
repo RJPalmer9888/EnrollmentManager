@@ -102,5 +102,17 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.StudentID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (ViewBag.Grid == true)
+    {
+        @Html.ActionLink("Back to Grid", "IndexGrid")
+    }
+    else if (ViewBag.Grid == false)
+    {
+        @Html.ActionLink("Back to List", "Index")
+    }
+    else
+    {
+        @Html.ActionLink("Back to List", "Index")
+    }
+
 </p>

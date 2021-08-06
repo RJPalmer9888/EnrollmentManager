@@ -1,87 +1,111 @@
-﻿@model IEnumerable<EnrollmentManager.DATA.Student>
+﻿@model PagedList.IPagedList<EnrollmentManager.DATA.Student>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-3">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    <div class="col-md-6">
+        <div class="filters">
+            @using (Html.BeginForm("Index", "Students", FormMethod.Get))
+            {
+                <p>
+                    Find by Name: @Html.TextBox("SearchString", ViewBag.SearchString as string)
+                    <input type="submit" class="btn btn-primary" value="Search" />
+                </p>
+            }
+        </div>
+    </div>
+    <div class="col-md-3">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = ViewBag.SearchString }))
+        <a href="@Url.Action("IndexGrid","Students")"><p>Grid View</p></a>
+    </div>
+</div>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FullName)
+            Full Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Major)
+            Major
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Address)
+            Address
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.City)
+            City
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.State)
+            State
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ZipCode)
+            Zip
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Phone)
+            Phone
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            Email
         </th>
         <th>
             Photo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StudentStatus.SSName)
+            Student Status
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Major)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ZipCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            <img src="~/imgstore/students/@item.PhotoUrl" alt="@item.FullName" title="@item.FullName" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentStatus.SSName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.StudentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.StudentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.StudentID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Major)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipCode)
+            </td>
+            <td>
+                @String.Format("{0:(###) ###-####}", Html.DisplayFor(modelItem => item.Phone))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <div class="buffer2"><img src="~/imgstore/students/@item.PhotoUrl" alt="@item.FullName" title="@item.FullName" /></div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentStatus.SSName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
+            </td>
+        </tr>
+    }
 
 </table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = ViewBag.SearchString }))
+

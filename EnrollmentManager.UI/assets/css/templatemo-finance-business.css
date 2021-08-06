@@ -250,13 +250,13 @@ header {
     transition: all 0.3s ease-in-out 0s;
 }
 
-    header .navbar {
-        /*padding: 20px 0px;*/
+/*header .navbar {
+        padding: 20px 0px;
     }
 
 .background-header .navbar {
-    /*padding: 10px 0px;*/
-}
+    padding: 10px 0px;
+}*/
 
 .background-header {
     top: 0;
@@ -710,11 +710,12 @@ ul.slick-dots {
 
     .fun-facts .left-content {
         margin-right: 45px;
+        background-color: rgba(0,0,0,0.3);
     }
 
 .count-area-content {
     text-align: center;
-    background-color: rgba(250,250,250,0.1);
+    background-color: rgba(0,0,0,0.3);
     padding: 25px 30px 35px 30px;
     margin: 15px 0px;
 }
@@ -1390,6 +1391,7 @@ footer {
     .fun-facts .left-content {
         margin-right: 0px;
         margin-bottom: 30px;
+
     }
 
     .more-info .right-content {
@@ -1476,4 +1478,73 @@ footer {
         color: #F9020A !important;
         border-bottom: none !important;
     }
+}
+
+.product-item {
+    border: 8px solid #eee;
+    margin-bottom: 30px;
+}
+
+    .product-item .down-content {
+        padding: 30px;
+        position: relative;
+    }
+
+    .product-item img {
+        max-height: 11em;
+        max-width: 20.85em;
+        min-width: 20.85em;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .product-item .down-content h4 {
+        font-size: 17px;
+        color: #1a6692;
+        margin-bottom: 20px;
+        margin-right: 1px;
+    }
+
+    .product-item .down-content h6 {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        font-size: 14px;
+        color: #121212;
+    }
+
+    .product-item .down-content p {
+        margin-bottom: 20px;
+    }
+
+    .product-item .down-content ul li {
+        display: inline-block;
+    }
+
+        .product-item .down-content ul li i {
+            color: #009B4D;
+            font-size: 14px;
+        }
+
+    .product-item .down-content span {
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+        font-size: 13px;
+        color: #009B4D;
+        font-weight: 500;
+    }
+
+.buffer {
+    min-height: 1em;
+    max-height: 14em;
+
+}
+
+.buffer2 img{
+    min-height: 3em;
+    max-height: 3em;
+    max-width: 4em;
+    min-width: 4em;
 }

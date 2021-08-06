@@ -15,13 +15,16 @@
             @Html.DisplayNameFor(model => model.EnrollmentID)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.ScheduledClass.Cours.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScheduledClass.CourseID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.FullName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.EnrollmentDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ScheduledClass.ScheduledClassID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Student.StudentID)
         </th>
         <th></th>
     </tr>
@@ -32,13 +35,16 @@
             @Html.DisplayFor(modelItem => item.EnrollmentID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            @Html.DisplayFor(modelItem => item.ScheduledClass.Cours.CourseName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ScheduledClass.CourseID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Student.StudentID)
+            @Html.DisplayFor(modelItem => item.Student.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnrollmentDate)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.EnrollmentID }) |
