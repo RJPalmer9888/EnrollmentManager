@@ -13,12 +13,15 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Threading.Tasks;
+using EnrollmentManager.DATA;
 
 
 namespace EnrollmentManager.UI.Controllers
 {
     public class HomeController : Controller
     {
+        private db_a745f4_enrollmentmanagerEntities db = new db_a745f4_enrollmentmanagerEntities();
+
         public HomeController()
         {
         }
@@ -45,6 +48,11 @@ namespace EnrollmentManager.UI.Controllers
         [HttpGet]
         public ActionResult Index(string returnUrl)
         {
+            var students = db.Students.Include(s => s.StudentStatus).OrderBy(s => s.LastName).ToList();
+            ViewBag.Students = db.Students.Count();
+            ViewBag.Courses = db.Courses.Count();
+            ViewBag.Classes = db.ScheduledClasses.Count();
+            ViewBag.Enrollments = db.Enrollments.Count();
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }

@@ -708,7 +708,12 @@ ul.slick-dots {
         margin-bottom: 40px;
     }
 
-    .fun-facts .left-content {
+    .fun-facts .left-content h1{
+        margin-right: 45px;
+        background-color: rgba(0,0,0,0.3);
+    }
+
+    .fun-facts .left-content p {
         margin-right: 45px;
         background-color: rgba(0,0,0,0.3);
     }

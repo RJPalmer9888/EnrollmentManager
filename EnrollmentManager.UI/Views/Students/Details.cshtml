@@ -4,104 +4,78 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
+<div class="container">
     <h4>Student</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+    <h1>@Html.DisplayFor(model => model.FullName)</h1>
+    <p class="description">@Html.DisplayFor(model => model.StudentStatus.SSName)</p>
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dd>
+                    @Html.DisplayFor(model => model.Major)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.City)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Major)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.City)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Major)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.State)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.State)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ZipCode)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ZipCode)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.State)
-        </dt>
+                <dd>
+                    @String.Format("{0:(###) ###-####}", Html.DisplayFor(model => model.Phone))
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.State)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ZipCode)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ZipCode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            Photo
-        </dt>
-
-        <dd>
+            </dl>
+        </div>
+        <div class="col-md 6">
             <img src="~/imgstore/students/@Html.DisplayFor(model => model.PhotoUrl)" alt="@Html.DisplayFor(model => model.FullName)" title="@Html.DisplayFor(model => model.FullName)" />
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StudentStatus.SSName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StudentStatus.SSName)
-        </dd>
-
-    </dl>
+        </div>
+    </div>
+    <hr />
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.StudentID }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.StudentID }) |
     @if (ViewBag.Grid == true)
     {
         @Html.ActionLink("Back to Grid", "IndexGrid")

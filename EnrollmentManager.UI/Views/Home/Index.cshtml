@@ -5,10 +5,20 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="left-content"">
+                <div class="left-content" >
                     @if (Request.IsAuthenticated)
                     {
                         <h1>Welcome, @User.Identity.GetUserName()!</h1>
+                        <br />
+                        if (User.IsInRole("Admin"))
+                        {
+                            <p>Your Admin Status grants you access to all Site Tables. If you need assistance with a Table not found on this site, please reach out to the database manager.</p>
+                        }
+                        else
+                        {
+                            <p>Your User Status grants you access to Enrollments, Classes, and Students. If you need assistance with another Table, please contact a site administrator.</p>
+                        }
+
                     }
                     else
                     {
@@ -62,26 +72,26 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="count-area-content">
-                            <div class="count-digit">945</div>
-                            <div class="count-title">Work Hours</div>
+                            <div class="count-digit">@ViewBag.Students</div>
+                            <div class="count-title">Students</div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="count-area-content">
-                            <div class="count-digit">1280</div>
-                            <div class="count-title">Great Reviews</div>
+                            <div class="count-digit">@ViewBag.Courses</div>
+                            <div class="count-title">Courses</div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="count-area-content">
-                            <div class="count-digit">578</div>
-                            <div class="count-title">Projects Done</div>
+                            <div class="count-digit">@ViewBag.Classes</div>
+                            <div class="count-title">Classes</div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="count-area-content">
-                            <div class="count-digit">26</div>
-                            <div class="count-title">Awards Won</div>
+                            <div class="count-digit">@ViewBag.Enrollments</div>
+                            <div class="count-title">Enrollments</div>
                         </div>
                     </div>
                 </div>

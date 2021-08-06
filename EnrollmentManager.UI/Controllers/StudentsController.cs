@@ -20,6 +20,7 @@ namespace EnrollmentManager.UI.Controllers
         private db_a745f4_enrollmentmanagerEntities db = new db_a745f4_enrollmentmanagerEntities();
 
         // GET: Students
+        #region Indexes
         public ActionResult Index(string searchString, int? page = 1)
         {
             @Session["grid"] = false;
@@ -66,6 +67,7 @@ namespace EnrollmentManager.UI.Controllers
 
             #endregion
         }
+        #endregion
 
         // GET: Students/Details/5
         public ActionResult Details(int? id)
